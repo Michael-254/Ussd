@@ -24,30 +24,9 @@ class CourseController extends Controller
         $network_code = $request->input('networkCode');
 
         $level = explode("*", $text);
-
         $ussd = (new Machine())->setSessionId($session_id)
-            ->setInput(end($level))
-            ->setInitialState(Welcome::class)
-            ->setStore('array');
-
-        /* $ussd = Ussd::machine()
-            ->setSessionId($session_id)
-            ->setFromRequest([
-                'network',
-                'phone_number' => '0717606015',
-                'SessionId' => '54566453434345',
-                'input' => 'msg'
-            ])
-            ->setInitialState(Welcome::class)
-            ->setResponse(function (string $message, string $action) {
-            return [
-                'USSDResp' => [
-                    'action' => $action,
-                    'menus' => '',
-                    'title' => $message
-                ]
-            ];
-	    }); */
+            ->setInput($text)
+            ->setInitialState(Welcome::class);
 
 	    return response($ussd->run()['message'])->header('Content-Type', 'text/plain');
     }
