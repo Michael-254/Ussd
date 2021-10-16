@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UssdQuestion;
+use App\Models\Content;
 use Illuminate\Http\Request;
 
-class UssdQuestionController extends Controller
+class ContentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class UssdQuestionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\UssdQuestion  $ussdQuestion
+     * @param  \App\Models\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function show(UssdQuestion $ussdQuestion)
+    public function show(Content $content)
     {
         //
     }
@@ -52,10 +52,10 @@ class UssdQuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\UssdQuestion  $ussdQuestion
+     * @param  \App\Models\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function edit(UssdQuestion $ussdQuestion)
+    public function edit(Content $content)
     {
         //
     }
@@ -64,10 +64,10 @@ class UssdQuestionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\UssdQuestion  $ussdQuestion
+     * @param  \App\Models\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UssdQuestion $ussdQuestion)
+    public function update(Request $request, Content $content)
     {
         //
     }
@@ -75,10 +75,10 @@ class UssdQuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\UssdQuestion  $ussdQuestion
+     * @param  \App\Models\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UssdQuestion $ussdQuestion)
+    public function destroy(Content $content)
     {
         //
     }

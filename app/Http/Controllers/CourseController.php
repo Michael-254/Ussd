@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\QuestionType;
+use App\Models\Course;
 use Illuminate\Http\Request;
+use Sparors\Ussd\Facades\Ussd;
+use App\Http\Ussd\States\Welcome;
 
-class QuestionTypeController extends Controller
+class CourseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,25 @@ class QuestionTypeController extends Controller
      */
     public function index()
     {
-        //
+        $ussd = Ussd::machine()
+	      ->setFromRequest([
+		  'network',
+		  'phone_number' => '0717606015',
+		  'SessionId' => '54566453434345',
+		  'input' => 'msg'
+	      ])
+	      ->setInitialState(Welcome::class)
+	      ->setResponse(function (string $message, string $action) {
+		  return [
+		      'USSDResp' => [
+			  'action' => $action,
+			  'menus' => '',
+			  'title' => $message
+		      ]
+		  ];
+	      });
+
+	    return response()->json($ussd->run());
     }
 
     /**
@@ -41,10 +61,10 @@ class QuestionTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\QuestionType  $questionType
+     * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function show(QuestionType $questionType)
+    public function show(Course $course)
     {
         //
     }
@@ -52,10 +72,10 @@ class QuestionTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\QuestionType  $questionType
+     * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function edit(QuestionType $questionType)
+    public function edit(Course $course)
     {
         //
     }
@@ -64,10 +84,10 @@ class QuestionTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\QuestionType  $questionType
+     * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, QuestionType $questionType)
+    public function update(Request $request, Course $course)
     {
         //
     }
@@ -75,10 +95,10 @@ class QuestionTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\QuestionType  $questionType
+     * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function destroy(QuestionType $questionType)
+    public function destroy(Course $course)
     {
         //
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUssdAnswersTable extends Migration
+class CreateSubTopicsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateUssdAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('ussd_answers', function (Blueprint $table) {
+        Schema::create('sub_topics', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ussd_question_id')->constrained();
-            $table->string('answer');
+            $table->foreignId('course_id')->constrained();
+            $table->string('title');
+            $table->string('slug');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateUssdAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ussd_answers');
+        Schema::dropIfExists('sub_topics');
     }
 }

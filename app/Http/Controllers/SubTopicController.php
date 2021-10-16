@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UssdResponse;
+use App\Models\SubTopic;
 use Illuminate\Http\Request;
 
-class UssdResponseController extends Controller
+class SubTopicController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class UssdResponseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\UssdResponse  $ussdResponse
+     * @param  \App\Models\SubTopic  $subTopic
      * @return \Illuminate\Http\Response
      */
-    public function show(UssdResponse $ussdResponse)
+    public function show(SubTopic $subTopic)
     {
         //
     }
@@ -52,10 +52,10 @@ class UssdResponseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\UssdResponse  $ussdResponse
+     * @param  \App\Models\SubTopic  $subTopic
      * @return \Illuminate\Http\Response
      */
-    public function edit(UssdResponse $ussdResponse)
+    public function edit(SubTopic $subTopic)
     {
         //
     }
@@ -64,10 +64,10 @@ class UssdResponseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\UssdResponse  $ussdResponse
+     * @param  \App\Models\SubTopic  $subTopic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UssdResponse $ussdResponse)
+    public function update(Request $request, SubTopic $subTopic)
     {
         //
     }
@@ -75,10 +75,10 @@ class UssdResponseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\UssdResponse  $ussdResponse
+     * @param  \App\Models\SubTopic  $subTopic
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UssdResponse $ussdResponse)
+    public function destroy(SubTopic $subTopic)
     {
         //
     }
