@@ -18,7 +18,7 @@ class CourseController extends Controller
     public function index()
     {
         $ussd = (new Machine())->setSessionId('1234')
-            ->setInput('1')
+            //->setInput('1')
             ->setInitialState(Welcome::class)
             ->setStore('array');
 

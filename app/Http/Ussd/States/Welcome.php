@@ -7,7 +7,7 @@ use Sparors\Ussd\State;
 
 class Welcome extends State
 {
-    protected $action = self::PROMPT;
+    //protected $action = self::PROMPT;
 
     protected function beforeRendering(): void
     {
