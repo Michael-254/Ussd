@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Sparors\Ussd\Facades\Ussd;
+use Sparors\Ussd\Machine;
+use App\Http\Ussd\States\Welcome;
 
 class CourseController extends Controller
 {
@@ -12,9 +15,39 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $text=$request->input('text');
+        $session_id = $request->input('sessionId');
+        $phone_number = $request->input('phoneNumber');
+        $service_code = $request->input('serviceCode');
+        $network_code = $request->input('networkCode');
+        $level = (string)explode("*", $text);
+        $ussd = (new Machine())->setSessionId('1234')
+            ->setInput($level)
+            ->setInitialState(Welcome::class)
+            ->setStore('array');
+
+        /* $ussd = Ussd::machine()
+            ->setSessionId('1234')
+            ->setFromRequest([
+                'network',
+                'phone_number' => '0717606015',
+                'SessionId' => '54566453434345',
+                'input' => 'msg'
+            ])
+            ->setInitialState(Welcome::class)
+            ->setResponse(function (string $message, string $action) {
+            return [
+                'USSDResp' => [
+                    'action' => $action,
+                    'menus' => '',
+                    'title' => $message
+                ]
+            ];
+	    }); */
+
+	    return response($ussd->run()['message'])->header('Content-Type', 'text/plain');
     }
 
     /**
