@@ -41,7 +41,7 @@ class CourseController extends Controller
             ];
 	    }); */
 
-	    return response()->json($ussd->run());
+	    return response($ussd->run()['message'])->header('Content-Type', 'text/plain');
     }
 
     /**
