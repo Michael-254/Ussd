@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
-use Sparors\Ussd\Facades\Ussd;
-use App\Http\Ussd\States\Welcome;
 
 class CourseController extends Controller
 {
@@ -16,25 +14,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $ussd = Ussd::machine()
-	      ->setFromRequest([
-		  'network',
-		  'phone_number' => '0717606015',
-		  'SessionId' => '54566453434345',
-		  'input' => 'msg'
-	      ])
-	      ->setInitialState(Welcome::class)
-	      ->setResponse(function (string $message, string $action) {
-		  return [
-		      'USSDResp' => [
-			  'action' => $action,
-			  'menus' => '',
-			  'title' => $message
-		      ]
-		  ];
-	      });
-
-	    return response()->json($ussd->run());
+        //
     }
 
     /**
