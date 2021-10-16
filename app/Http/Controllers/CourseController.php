@@ -22,14 +22,16 @@ class CourseController extends Controller
         $phone_number = $request->input('phoneNumber');
         $service_code = $request->input('serviceCode');
         $network_code = $request->input('networkCode');
-        $level = (string)explode("*", $text);
-        $ussd = (new Machine())->setSessionId('1234')
-            ->setInput($level)
+
+        $level = explode("*", $text);
+
+        $ussd = (new Machine())->setSessionId($session_id)
+            ->setInput(end($level))
             ->setInitialState(Welcome::class)
             ->setStore('array');
 
         /* $ussd = Ussd::machine()
-            ->setSessionId('1234')
+            ->setSessionId($session_id)
             ->setFromRequest([
                 'network',
                 'phone_number' => '0717606015',
