@@ -6,7 +6,7 @@ use Sparors\Ussd\State;
 
 class Content extends State
 {
-    public function beforeRendering(): void
+    protected function beforeRendering(): void
     {
         $this->menu->text('CON Content menu');
     }

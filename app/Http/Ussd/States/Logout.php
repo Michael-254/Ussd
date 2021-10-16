@@ -8,7 +8,7 @@ class Logout extends State
 {
     protected $action = self::PROMPT;
 
-    public function beforeRendering(): void
+    protected function beforeRendering(): void
     {
         $this->menu->text('END You have successfully logged out!');
     }

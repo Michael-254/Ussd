@@ -6,7 +6,7 @@ use Sparors\Ussd\State;
 
 class Error extends State
 {
-    public function beforeRendering(): void
+    protected function beforeRendering(): void
     {
         $this->menu->text('CON Error menu');
     }
