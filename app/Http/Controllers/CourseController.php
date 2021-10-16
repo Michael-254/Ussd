@@ -15,10 +15,16 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $text=$request->input('text');
+        $session_id = $request->input('sessionId');
+        $phone_number = $request->input('phoneNumber');
+        $service_code = $request->input('serviceCode');
+        $network_code = $request->input('networkCode');
+        $level = (string)explode("*", $text);
         $ussd = (new Machine())->setSessionId('1234')
-            //->setInput('1')
+            ->setInput($level)
             ->setInitialState(Welcome::class)
             ->setStore('array');
 

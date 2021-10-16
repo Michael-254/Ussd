@@ -13,7 +13,7 @@ class Welcome extends State
     {
         $courses = Course::pluck('title')->toArray();
         $pages= ceil(count($courses)/5);
-        $this->menu->text('Welcome To Agriculture training center')
+        $this->menu->text('CON Welcome To Agriculture training center')
             ->lineBreak(2)
             ->line('Select a course')
             ->paginateListing(
@@ -21,15 +21,15 @@ class Welcome extends State
                 , 1, $pages, '. ')
             ->lineBreak(2)
             ->line('98. Next Page')
-            ->line('#. Back')
-            ->line('Main Menu');
+            ->line('0. Back')
+            ->line('00. Main Menu');
     }
 
     protected function afterRendering(string $argument): void
     {
         $this->decision->equal('1', Airtime::class)
                        ->between(2, 4, Payment::class)
-                       ->in(['9', '#'], Wait::class)
+                       ->in(['0', '00'], Wait::class)
                        ->any(Error::class);
     }
 }
