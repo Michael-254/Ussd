@@ -7,10 +7,12 @@ use Sparors\Ussd\State;
 
 class Welcome extends State
 {
+    protected $action = self::PROMPT;
+
     protected function beforeRendering(): void
     {
         $courses = Course::pluck('title')->toArray();
-        $pages= $courses->count()/5;
+        $pages= ceil(count($courses)/5);
         $this->menu->text('Welcome To Agriculture training center')
             ->lineBreak(2)
             ->line('Select a course')
