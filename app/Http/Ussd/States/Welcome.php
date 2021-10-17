@@ -7,7 +7,6 @@ use Sparors\Ussd\State;
 
 class Welcome extends State
 {
-
     protected function beforeRendering(): void
     {
         $courses = Course::pluck('title')->toArray();
@@ -19,18 +18,18 @@ class Welcome extends State
                 $courses
                 , 1, 5, ':')
             ->lineBreak(1)
+            ->line('97:Ask a question')
             ->line('98:More')
-            ->line('0:Back')
-            ->line('00:Main Menu');
+            ->line('0:Exit');
     }
 
     protected function afterRendering(string $argument): void
     {
-
+        $this->record->course = $argument;
         $this->decision->equal('98', Next::class)
-                       ->between(1, 10, Subtopic::class)
-                       ->in(['0', '00'], Back::class)
-                       ->equal('000', Logout::class)
+                       ->between(1, 5, Subtopic::class)
+                       ->equal('97', AskQuestion::class)
+                       ->equal('0', Logout::class)
                        ->any(Error::class);
     }
 }

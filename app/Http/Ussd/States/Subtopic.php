@@ -2,16 +2,20 @@
 
 namespace App\Http\Ussd\States;
 
+use App\Models\Course;
 use App\Models\SubTopic as ModelsSubTopic;
 use Sparors\Ussd\State;
 
 class Subtopic extends State
 {
-    public function beforeRendering(): void
+    protected function beforeRendering(): void
     {
-        $sub_topics = ModelsSubTopic::pluck('title')->toArray();
+        $skip = $this->record->get('course');
 
-        $this->menu->text('CON Selected Course')
+        $course = Course::skip($skip - 1)->first();
+        $sub_topics = ModelsSubTopic::whereCourseId($course->id)->pluck('title')->toArray();
+
+        $this->menu->text('CON '. $course->title)
             ->lineBreak(2)
             ->line('Select a Sub topic')
             ->paginateListing(
@@ -25,8 +29,10 @@ class Subtopic extends State
 
     protected function afterRendering(string $argument): void
     {
-        $this->decision->in(['0', '00'], Back::class)
-                       ->equal('000', Logout::class)
+        $this->record->subTopic = $argument;
+        $this->decision->equal('000', Logout::class)
+                       ->equal('98', Next::class)
+                       ->between(1, 5, Content::class)
                        ->any(Error::class);
     }
 }
