@@ -12,5 +12,7 @@ class Course extends Model
     protected $fillable = [
         'title',
         'slug',
+        'instructor',
+        'provider',
     ];
 }

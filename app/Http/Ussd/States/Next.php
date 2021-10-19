@@ -17,6 +17,7 @@ class Next extends State
                 $courses
                 , 2, 5, ':')
             ->lineBreak(1)
+            ->line('97:Ask a question')
             ->line('98:More')
             ->line('99:Back')
             ->line('100:Main Menu')

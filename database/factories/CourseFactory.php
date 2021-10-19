@@ -27,6 +27,8 @@ class CourseFactory extends Factory
         return [
             'title' => $title,
             'slug' => $slug,
+            'instructor' => $this->faker->name(),
+            'provider' => Str::limit($this->faker->sentence,5),
         ];
     }
 }

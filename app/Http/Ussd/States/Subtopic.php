@@ -16,12 +16,16 @@ class Subtopic extends State
         $sub_topics = ModelsSubTopic::whereCourseId($course->id)->pluck('title')->toArray();
 
         $this->menu->text('CON '. $course->title)
+            ->lineBreak(1)
+            ->line('Provider: '. $course->provider)
+            ->line('Instructor: '. $course->instructor)
             ->lineBreak(2)
             ->line('Select a Sub topic')
             ->paginateListing(
                 $sub_topics
                 , 1, 5, ':')
             ->lineBreak(1)
+            ->line('97:Ask a question')
             ->line('98:More')
             ->line('0:Back')
             ->line('00:Main Menu');

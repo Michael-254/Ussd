@@ -24,6 +24,7 @@ class Content extends State
             ->line('Subtopic Contents')
             ->line($content->content)
             ->lineBreak(1)
+            ->line('97:Ask a question')
             ->line('98:More')
             ->line('0:Back')
             ->line('00:Main Menu');
