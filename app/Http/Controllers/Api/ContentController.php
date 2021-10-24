@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\SubTopic;
+use App\Http\Controllers\Controller;
+use App\Models\Content;
 use Illuminate\Http\Request;
+use Laravel\Passport\Client;
 
-class SubTopicController extends Controller
+class ContentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +43,10 @@ class SubTopicController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SubTopic  $subTopic
+     * @param  \App\Models\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function show(SubTopic $subTopic)
+    public function show(Content $content)
     {
         //
     }
@@ -52,10 +54,10 @@ class SubTopicController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SubTopic  $subTopic
+     * @param  \App\Models\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function edit(SubTopic $subTopic)
+    public function edit(Content $content)
     {
         //
     }
@@ -64,10 +66,10 @@ class SubTopicController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SubTopic  $subTopic
+     * @param  \App\Models\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SubTopic $subTopic)
+    public function update(Request $request, Content $content)
     {
         //
     }
@@ -75,10 +77,10 @@ class SubTopicController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SubTopic  $subTopic
+     * @param  \App\Models\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SubTopic $subTopic)
+    public function destroy(Content $content)
     {
         //
     }

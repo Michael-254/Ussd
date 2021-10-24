@@ -10,6 +10,7 @@ class Welcome extends State
     protected function beforeRendering(): void
     {
         $courses = Course::pluck('title')->toArray();
+        $this->record->pageNo = 1;
 
         $this->menu->text('CON Welcome To Agriculture training center')
             ->lineBreak(2)

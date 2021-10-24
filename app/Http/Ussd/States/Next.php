@@ -9,13 +9,17 @@ class Next extends State
 {
     protected function beforeRendering(): void
     {
+        $previous_no = $this->record->get('pageNo');
+        $current_page = (int)$previous_no + 1;
+        $this->record->set('pageNo', $current_page);
+
         $courses = Course::pluck('title')->toArray();
         $this->menu->text('CON Welcome To Agriculture training center')
             ->lineBreak(2)
             ->line('Select a course')
             ->paginateListing(
                 $courses
-                , 2, 5, ':')
+                , $current_page, 5, ':')
             ->lineBreak(1)
             ->line('97:Ask a question')
             ->line('98:More')
