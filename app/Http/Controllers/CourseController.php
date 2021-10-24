@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Course as ResourcesCourse;
 use App\Models\Course;
 use Illuminate\Http\Request;
-use Sparors\Ussd\Facades\Ussd;
-use Sparors\Ussd\Machine;
-use App\Http\Ussd\States\Welcome;
-use App\Models\User;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\Response;
 
 class CourseController extends Controller
 {
@@ -17,36 +15,10 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $text = $request->input('text');
-        $session_id = $request->input('sessionId');
-        $phone_number = $request->input('phoneNumber');
-        $service_code = $request->input('serviceCode');
-        $network_code = $request->input('networkCode');
-        Session::put('phone_number', $phone_number);
-
-        $user = User::wherePhoneNumber($phone_number)->first();
-        if ($user == null) {
-            User::create(['phone_number' => $phone_number]);
-        }
-
-        $level = explode("*", $text);
-        $ussd = (new Machine())->setSessionId($session_id)
-            ->setInput(end($level))
-            ->setInitialState(Welcome::class);
-
-        return response($ussd->run()['message'])->header('Content-Type', 'text/plain');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $courses = Course::all();
+        return ResourcesCourse::collection($courses);
     }
 
     /**
@@ -57,7 +29,19 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'title' => 'required',
+            'instructor' => 'required',
+            'provider' => 'required',
+        ]);
+
+        $slug = Str::slug($request->title);
+ 
+        $course = request()->user()->courses()->create($validateData + ['slug' => $slug]);
+
+        return (new ResourcesCourse($course))
+            ->response()
+            ->setStatusCode(Response::HTTP_CREATED);
     }
 
     /**
@@ -68,18 +52,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Course  $course
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Course $course)
-    {
-        //
+        return new ResourcesCourse($course);
     }
 
     /**
@@ -89,9 +62,20 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(Course $course)
     {
-        //
+        $validateData = request()->validate([
+            'title' => 'required',
+            'instructor' => 'required',
+            'provider' => 'required',
+        ]);
+        $slug = Str::slug(request()->title);
+
+        $course->update($validateData + ['slug' => $slug]);
+
+        return (new ResourcesCourse($course))
+            ->response()
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
@@ -102,6 +86,9 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        $course->delete();
+
+        return response([], Response::HTTP_NO_CONTENT);
     }
+
 }

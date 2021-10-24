@@ -26,14 +26,16 @@ class Content extends State
             ->lineBreak(1)
             ->line('97:Ask a question')
             ->line('98:More')
-            ->line('0:Back')
-            ->line('00:Main Menu');
+            ->line('0:Exit')
+            ->line('99:Main Menu');
     }
 
     protected function afterRendering(string $argument): void
     {
         $this->decision->equal('000', Logout::class)
+                        ->equal('97', AskQuestion::class)
                        ->equal('98', Next::class)
+                       ->equal('99', Welcome::class)
                        ->any(Error::class);
     }
 }

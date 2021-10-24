@@ -34,8 +34,10 @@ class Subtopic extends State
     protected function afterRendering(string $argument): void
     {
         $this->record->subTopic = $argument;
-        $this->decision->equal('000', Logout::class)
+        $this->decision->equal('000', Logout::class)                       
+                       ->equal('97', AskQuestion::class)
                        ->equal('98', Next::class)
+                       ->equal('99', Welcome::class)
                        ->between(1, 5, Content::class)
                        ->any(Error::class);
     }

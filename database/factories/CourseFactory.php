@@ -25,6 +25,7 @@ class CourseFactory extends Factory
         $title = $this->faker->sentence;
         $slug = Str::slug($title);
         return [
+            'user_id' => 1,
             'title' => $title,
             'slug' => $slug,
             'instructor' => $this->faker->name(),
