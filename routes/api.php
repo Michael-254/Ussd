@@ -21,9 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/test', [App\Http\Controllers\UssdController::class, 'index']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::post('/course/store', [App\Http\Controllers\CourseController::class, 'store']);
-    Route::put('/course/update/{course}', [App\Http\Controllers\CourseController::class, 'update']);
-    Route::get('/courses', [App\Http\Controllers\CourseController::class, 'index']);
-    Route::delete('/courses/{course}', [App\Http\Controllers\CourseController::class, 'destroy']);
+    Route::post('/course/store', [App\Http\Controllers\Api\CourseController::class, 'store']);
+    Route::put('/course/update/{course}', [App\Http\Controllers\Api\CourseController::class, 'update']);
+    Route::get('/courses', [App\Http\Controllers\Api\CourseController::class, 'index']);
+    Route::delete('/courses/{course}', [App\Http\Controllers\Api\CourseController::class, 'destroy']);
 
 });

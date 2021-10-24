@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Resources\Course as ResourcesCourse;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
+use Laravel\Passport\Client;
 
 class CourseController extends Controller
 {
@@ -15,10 +17,19 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $courses = Course::all();
-        return ResourcesCourse::collection($courses);
+        $client = Client::whereId($request->key)->whereSecret($request->secret)->get();
+        if($client->count > 0) {
+            $courses = Course::all();
+            return ResourcesCourse::collection($courses);
+        }
+        else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Unauthorized'
+            ], 401);
+        }
     }
 
     /**

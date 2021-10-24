@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Content;
+use App\Http\Controllers\Controller;
+use App\Models\SubTopic;
 use Illuminate\Http\Request;
+use Laravel\Passport\Client;
 
-class ContentController extends Controller
+class SubTopicController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +43,10 @@ class ContentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Content  $content
+     * @param  \App\Models\SubTopic  $subTopic
      * @return \Illuminate\Http\Response
      */
-    public function show(Content $content)
+    public function show(SubTopic $subTopic)
     {
         //
     }
@@ -52,10 +54,10 @@ class ContentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Content  $content
+     * @param  \App\Models\SubTopic  $subTopic
      * @return \Illuminate\Http\Response
      */
-    public function edit(Content $content)
+    public function edit(SubTopic $subTopic)
     {
         //
     }
@@ -64,10 +66,10 @@ class ContentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Content  $content
+     * @param  \App\Models\SubTopic  $subTopic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Content $content)
+    public function update(Request $request, SubTopic $subTopic)
     {
         //
     }
@@ -75,10 +77,10 @@ class ContentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Content  $content
+     * @param  \App\Models\SubTopic  $subTopic
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Content $content)
+    public function destroy(SubTopic $subTopic)
     {
         //
     }
