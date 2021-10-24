@@ -37,7 +37,7 @@ class CourseController extends Controller
 
         $slug = Str::slug($request->title);
  
-        $course = request()->user()->courses()->create($validateData + ['slug' => $slug]);
+        $course = Course::create($validateData + ['slug' => $slug,'user_id' => 1]);
 
         return (new ResourcesCourse($course))
             ->response()
