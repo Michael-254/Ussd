@@ -22,8 +22,15 @@ Route::post('/test', [App\Http\Controllers\UssdController::class, 'index']);
 
 //Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/course/store', [App\Http\Controllers\Api\CourseController::class, 'store']);
-    Route::put('/course/update/{course}', [App\Http\Controllers\Api\CourseController::class, 'update']);
+    Route::get('/course/{course}', [App\Http\Controllers\Api\FAQController::class, 'show']);
+    Route::patch('/course/{course}', [App\Http\Controllers\Api\CourseController::class, 'update']);
     Route::get('/courses', [App\Http\Controllers\Api\CourseController::class, 'index']);
     Route::delete('/courses/{course}', [App\Http\Controllers\Api\CourseController::class, 'destroy']);
+
+    Route::post('/faq/store', [App\Http\Controllers\Api\FAQController::class, 'store']);
+    Route::get('/faq/{fAQ}', [App\Http\Controllers\Api\FAQController::class, 'show']);
+    Route::patch('/faq/{fAQ}', [App\Http\Controllers\Api\FAQController::class, 'update']);
+    Route::get('/faqs', [App\Http\Controllers\Api\FAQController::class, 'index']);
+    Route::delete('/faq/{fAQ}', [App\Http\Controllers\Api\FAQController::class, 'destroy']);
 
 //});
