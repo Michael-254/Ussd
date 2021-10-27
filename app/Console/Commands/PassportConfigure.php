@@ -40,8 +40,8 @@ class PassportConfigure extends Command
     {
         $this->call('passport:install');
 
-        $personal_client_secret = DB::table('oauth_clients')->find(1)->secret;
-        $password_client_secret = DB::table('oauth_clients')->find(2)->secret;
+        $personal_client_secret = DB::table('oauth_clients')->first()->secret;
+        $password_client_secret = DB::table('oauth_clients')->skip(1)->first()->secret;
 
         $this->writeNewEnvironmentFileWith('PERSONAL_CLIENT_SECRET', $personal_client_secret);
         $this->writeNewEnvironmentFileWith('PASSWORD_CLIENT_SECRET', $password_client_secret);
