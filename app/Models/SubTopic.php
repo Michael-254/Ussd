@@ -14,4 +14,8 @@ class SubTopic extends Model
         'title',
         'slug',
     ];
+
+    public function contents(){
+        return $this->hasMany(Content::class);
+    }
 }

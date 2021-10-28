@@ -15,4 +15,8 @@ class Course extends Model
         'instructor',
         'provider',
     ];
+
+    public function subtopics(){
+        return $this->hasMany(SubTopic::class);
+    }
 }

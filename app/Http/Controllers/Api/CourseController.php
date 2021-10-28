@@ -20,11 +20,10 @@ class CourseController extends Controller
     public function index(Request $request)
     {
         $client = Client::whereId($request->key)->whereSecret($request->secret)->get();
-        if($client->count() > 0) {
+        if ($client->count() > 0) {
             $courses = Course::all();
             return ResourcesCourse::collection($courses);
-        }
-        else {
+        } else {
             return response()->json([
                 'success' => false,
                 'message' => 'Unauthorized'
@@ -47,7 +46,7 @@ class CourseController extends Controller
         ]);
 
         $slug = Str::slug($request->title);
- 
+
         $course = Course::create($validateData + ['slug' => $slug]);
 
         return (new ResourcesCourse($course))
@@ -63,7 +62,11 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        return new ResourcesCourse($course);
+        $Course = $course->load('subtopics.contents');
+
+        return response()->json([
+            'data' => $Course,
+        ]);
     }
 
     /**
@@ -101,5 +104,4 @@ class CourseController extends Controller
 
         return response([], Response::HTTP_NO_CONTENT);
     }
-
 }
