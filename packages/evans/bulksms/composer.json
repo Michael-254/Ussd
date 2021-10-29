@@ -1,0 +1,26 @@
+{
+    "name": "evans/bulksms",
+    "description": "BulkSMS API implementation in PHP.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Evans Wanguba",
+            "email": "ewanguba@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "evans/curl": "~1.4.6",
+        "respect/validation": "~1.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "<6"
+    },
+    "autoload": {
+        "psr-4": {
+            "evans\\BulkSms\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
