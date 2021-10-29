@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Evans\BulkSms\Evans\BulkSms\Laravel\BulkSmsServiceProvider::class,
 
         /*
          * Application Service Providers...
