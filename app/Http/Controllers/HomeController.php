@@ -3,19 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Evans\BulkSms\BulkSmsService;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -23,6 +14,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $bulkSms = new BulkSmsService('username', 'password', 'http://bulksms.vsms.net:5567');
+        $request = $bulkSms->sendMessage('254703780985', 'Hello there!');
+        
+        dd($request);
     }
 }

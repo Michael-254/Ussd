@@ -2,14 +2,14 @@
 /**
  * BulkSMS PHP implementation
  *
- * @author    Andreas Lutro <evans@gmail.com>
+ * @author    Evans Wanguba <ewanguba@gmail.com>
  * @license   http://opensource.org/licenses/MIT
  * @package   evans/bulksms
  */
 
 namespace Evans\BulkSms\Sender;
 
-use evans\cURL\cURL;
+use anlutro\cURL\cURL;
 use evans\cURL\Response;
 use Respect\Validation\Validator as v;
 

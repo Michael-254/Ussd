@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "evans/curl": "~1.4.6",
+        "anlutro/curl": "~1.4.6",
         "respect/validation": "~1.0"
     },
     "require-dev": {
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "evans\\BulkSms\\": "src/"
+            "Evans\\BulkSms\\": "src/"
         }
     },
     "minimum-stability": "dev"

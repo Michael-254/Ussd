@@ -24,7 +24,7 @@ class BulkSmsServiceSendBatchMessageTest extends PHPUnit_Framework_TestCase
 
     public function mockCurl()
     {
-        return m::mock('evans\cURL\cURL');
+        return m::mock('anlutro\cURL\cURL');
     }
 
     public function makeService($username, $password, $baseurl, $curl = null)
