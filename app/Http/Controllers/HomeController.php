@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $bulkSms = new BulkSmsService('mwangimike15@gmail.com', 'fEA8HhTJfY3evyn', 'http://bulksms.vsms.net:5567');
+        $bulkSms = new BulkSmsService('mikedee_254', 'fEA8HhTJfY3evyn', 'http://bulksms.vsms.net:5567');
         $request = $bulkSms->sendMessage('254703780985', 'Hello there!');
         
         dd($request);

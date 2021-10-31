@@ -12,7 +12,7 @@ namespace Evans\BulkSms\Sender;
 use Evans\BulkSms\BulkSmsException;
 use Evans\BulkSms\Laravel\BulkSmsService;
 use Evans\BulkSms\Message;
-use evans\cURL\Response;
+use anlutro\cURL\Response;
 
 /**
  * Class for sending single messages.

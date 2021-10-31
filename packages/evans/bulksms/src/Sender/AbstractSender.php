@@ -10,7 +10,7 @@
 namespace Evans\BulkSms\Sender;
 
 use anlutro\cURL\cURL;
-use evans\cURL\Response;
+use anlutro\cURL\Response;
 use Respect\Validation\Validator as v;
 
 abstract class AbstractSender

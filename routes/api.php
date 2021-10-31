@@ -14,28 +14,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/token', 'Api\Auth\LoginController@login');
+Route::post('/refresh', 'Api\Auth\LoginController@refresh');
+Route::post('/test', 'UssdController@index');
 
-Route::post('/test', [App\Http\Controllers\UssdController::class, 'index']);
+Route::middleware(['auth:api'])->group(function () {
+    Route::get('/user', function (Request $request) { return $request->user(); });
 
-//Route::middleware(['auth:sanctum'])->group(function () {
-    Route::post('/course/store', [App\Http\Controllers\Api\CourseController::class, 'store']);
-    Route::get('/course/{course}', [App\Http\Controllers\Api\CourseController::class, 'show']);
-    Route::patch('/course/{course}', [App\Http\Controllers\Api\CourseController::class, 'update']);
-    Route::get('/courses', [App\Http\Controllers\Api\CourseController::class, 'index']);
-    Route::delete('/courses/{course}', [App\Http\Controllers\Api\CourseController::class, 'destroy']);
+    Route::post('/course/store', 'Api\CourseController@store');
+    Route::get('/course/{course}', 'Api\CourseController@show');
+    Route::patch('/course/{course}', 'Api\CourseController@update');
+    Route::get('/courses', 'Api\CourseController@index');
+    Route::delete('/courses/{course}', 'Api\CourseController@destroy');
 
-    Route::post('/subtopic/store', [App\Http\Controllers\Api\SubTopicController::class, 'store']);
-    Route::patch('/subtopic/{subTopic}', [App\Http\Controllers\Api\SubTopicController::class, 'update']);
-    Route::delete('/subtopic/{subTopic}', [App\Http\Controllers\Api\SubTopicController::class, 'destroy']);
+    Route::post('/subtopic/store', 'Api\SubTopicController@store');
+    Route::patch('/subtopic/{subTopic}', 'Api\SubTopicController@update');
+    Route::delete('/subtopic/{subTopic}', 'Api\SubTopicController@destroy');
 
-    Route::post('/faq/store', [App\Http\Controllers\Api\FAQController::class, 'store']);
-    Route::get('/faq/{fAQ}', [App\Http\Controllers\Api\FAQController::class, 'show']);
-    Route::patch('/faq/{fAQ}', [App\Http\Controllers\Api\FAQController::class, 'update']);
-    Route::get('/faqs', [App\Http\Controllers\Api\FAQController::class, 'index']);
-    Route::delete('/faq/{fAQ}', [App\Http\Controllers\Api\FAQController::class, 'destroy']);
+    Route::post('/faq/store', 'Api\FAQController@store');
+    Route::get('/faq/{fAQ}', 'Api\FAQController@show');
+    Route::patch('/faq/{fAQ}', 'Api\FAQController@update');
+    Route::get('/faqs', 'Api\FAQController@index');
+    Route::delete('/faq/{fAQ}', 'Api\FAQController@destroy');
     
 
-//});
+});

@@ -15,7 +15,7 @@ class BulkSmsServiceGetStatusTest extends PHPUnit_Framework_TestCase
             'password' => 'bar',
             'batch_id' => '123445566'
         );
-        $mockResponse = m::mock('evans\cURL\Response');
+        $mockResponse = m::mock('anlutro\cURL\Response');
         $mockResponse->statusCode = 200;
         $mockResponse->body = "0|Returns to follow\n\n";
         $mockResponse->body .= "1212121|11\n";
@@ -48,7 +48,7 @@ class BulkSmsServiceGetStatusTest extends PHPUnit_Framework_TestCase
             'password' => 'bar',
             'batch_id' => '123445566'
         );
-        $mockResponse       = m::mock('evans\cURL\Response');
+        $mockResponse       = m::mock('anlutro\cURL\Response');
         $mockResponse->statusCode = 200;
         $mockResponse->body = "0|Returns to follow\n\n";
         $mockResponse->body .= "1212121|11\n";
@@ -75,7 +75,7 @@ class BulkSmsServiceGetStatusTest extends PHPUnit_Framework_TestCase
             'password' => 'bar',
             'batch_id' => '123445566'
         );
-        $mockResponse       = m::mock('evans\cURL\Response');
+        $mockResponse       = m::mock('anlutro\cURL\Response');
         $mockResponse->statusCode = 200;
         $mockResponse->body = "0|Returns to follow\n\n";
         $mockResponse->body .= "\n";
@@ -98,7 +98,7 @@ class BulkSmsServiceGetStatusTest extends PHPUnit_Framework_TestCase
             'password' => 'bar',
             'batch_id' => '123445566'
         );
-        $mockResponse       = m::mock('evans\cURL\Response');
+        $mockResponse       = m::mock('anlutro\cURL\Response');
         $mockResponse->code = '500';
         $mockResponse->body = "0|Returns to follow\n\n";
         $mockResponse->body .= "1212121|11\n";
@@ -121,7 +121,7 @@ class BulkSmsServiceGetStatusTest extends PHPUnit_Framework_TestCase
             'password' => 'bar',
             'batch_id' => '123445566'
         );
-        $mockResponse       = m::mock('evans\cURL\Response');
+        $mockResponse       = m::mock('anlutro\cURL\Response');
         $mockResponse->statusCode = 200;
         $mockResponse->body = "23|invalid credentials (username was: XXXXXXX)|\n";
         $curl               = $this->mockCurl();
@@ -140,7 +140,7 @@ class BulkSmsServiceGetStatusTest extends PHPUnit_Framework_TestCase
             'password' => 'bar',
             'batch_id' => '123445566'
         );
-        $mockResponse       = m::mock('evans\cURL\Response');
+        $mockResponse       = m::mock('anlutro\cURL\Response');
         $mockResponse->statusCode = 200;
         $mockResponse->body = "0|Returns to follow\n\n";
         $mockResponse->body .= "1212121|11\n";

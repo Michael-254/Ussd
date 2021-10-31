@@ -150,7 +150,7 @@ class BulkSmsService
     /**
      * Validate a response from the API to check for errors
      *
-     * @param  evans\cURL\Response $response
+     * @param  anlutro\cURL\Response $response
      *
      * @return bool
      * @throws BulkSmsException

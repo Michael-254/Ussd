@@ -42,7 +42,7 @@ class BulkSmsServiceSendBatchMessageTest extends PHPUnit_Framework_TestCase
         $bsms = $this->makeService('foo', 'bar', 'http://bulksms.vsms.net:5567', $curl);
         $this->assertEquals(
             array('status_code' => 0, 'status_description' => "IN_PROGRESS", 'batch_id' => 4712345678),
-            $bsms->sendBulkMessages(array(m::mock('evans\cURL\Response')))
+            $bsms->sendBulkMessages(array(m::mock('anlutro\cURL\Response')))
         );
     }
 
@@ -53,7 +53,7 @@ class BulkSmsServiceSendBatchMessageTest extends PHPUnit_Framework_TestCase
             'password'   => 'bar',
             'batch_data' => "msisdn,message\n\"4917610908093\",\"TestText\"",
         );
-        $mockResponse       = m::mock('evans\cURL\Response');
+        $mockResponse       = m::mock('anlutro\cURL\Response');
         $mockResponse->statusCode = 200;
         $mockResponse->body = '0|IN_PROGRESS|4712345678';
         $curl               = $this->mockCurl();
@@ -76,7 +76,7 @@ class BulkSmsServiceSendBatchMessageTest extends PHPUnit_Framework_TestCase
             'password'   => 'bar',
             'batch_data' => "msisdn,message\n\"4917610908093\",\"TestText\"\n\"4917610908094\",\"TestText2\"",
         );
-        $mockResponse       = m::mock('evans\cURL\Response');
+        $mockResponse       = m::mock('anlutro\cURL\Response');
         $mockResponse->statusCode = 200;
         $mockResponse->body = '0|IN_PROGRESS|4712345678';
         $curl               = $this->mockCurl();
@@ -101,7 +101,7 @@ class BulkSmsServiceSendBatchMessageTest extends PHPUnit_Framework_TestCase
             'batch_data'    => "msisdn,message\n\"4917610908093\",\"TestText\"\n\"4917610908094\",\"TestText2\"",
             'routing_group' => 1,
         );
-        $mockResponse       = m::mock('evans\cURL\Response');
+        $mockResponse       = m::mock('anlutro\cURL\Response');
         $mockResponse->statusCode = 200;
         $mockResponse->body = '0|IN_PROGRESS|4712345678';
         $curl               = $this->mockCurl();

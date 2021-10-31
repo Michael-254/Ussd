@@ -19,16 +19,8 @@ class CourseController extends Controller
      */
     public function index(Request $request)
     {
-        $client = Client::whereId($request->key)->whereSecret($request->secret)->get();
-        if ($client->count() > 0) {
-            $courses = Course::all();
-            return ResourcesCourse::collection($courses);
-        } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'Unauthorized'
-            ], 401);
-        }
+        $courses = Course::all();
+        return ResourcesCourse::collection($courses);
     }
 
     /**

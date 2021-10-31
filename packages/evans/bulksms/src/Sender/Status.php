@@ -10,7 +10,7 @@
 namespace Evans\BulkSms\Sender;
 
 use Evans\BulkSms\BulkSmsException;
-use evans\cURL\Response;
+use anlutro\cURL\Response;
 
 /**
  * Class for getting the message status
@@ -29,7 +29,7 @@ class Status extends AbstractSender
      *
      * @param string $batchid
      *
-     * @return \evans\cURL\Response|void
+     * @return \anlutro\cURL\Response|void
      */
     public function getStatusForBatchId($batchid)
     {
@@ -41,7 +41,7 @@ class Status extends AbstractSender
      *
      * @param $batchid
      *
-     * @return \evans\cURL\Response|void
+     * @return \anlutro\cURL\Response|void
      */
     public function send($batchid)
     {

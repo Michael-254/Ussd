@@ -1,6 +1,6 @@
 <?php
 return array(
-    'username' => 'mwangimike15@gmail.com',
+    'username' => 'mikedee_254',
     'password' => 'fEA8HhTJfY3evyn',
 
     'baseurl' => 'http://bulksms.vsms.net:5567',
